@@ -1,0 +1,32 @@
+{
+  "name": "shopify-as-promised",
+  "version": "1.0.0",
+  "description": "Library that uses promises to talk to the Shopify API",
+  "license": "",
+  "repository" : { 
+      "type" : "git", 
+      "url" : "https://github.com/jonboydell/shopify-as-promised.git"
+  },
+  "main": "shopify.js",
+  "scripts": {
+    "test": "nyc --reporter=html mocha"
+  },
+  "author": "jonboydell@hotmail.com",
+  "dependencies": {
+    "request": "^2.81.x"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.x",
+    "chai": "^4.0.x",
+    "chai-as-promised": "^7.0.x",
+    "eslint": "^3.19.x",
+    "eslint-config-airbnb": "^14.1.x",
+    "eslint-plugin-import": "^2.2.x",
+    "eslint-plugin-jsx-a11y": "^4.0.x",
+    "eslint-plugin-react": "^6.10.x",
+    "mocha": "^3.4.x",
+    "nyc": "^11.0.x",
+    "sinon": "2.3.x",
+    "winston": "^2.3.x"
+  }
+}

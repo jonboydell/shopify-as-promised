@@ -1,0 +1,22 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "no-console": 0,
+    "semi": ["error", "never"],
+    "no-shadow": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": [0],
+    "react/prefer-stateless-function": [0],
+    "comma-dangle": 0,
+    "max-len": ["error", 200]
+  },
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "parser": "babel-eslint",
+  "env":{
+    "mocha": true
+  }
+}
+
