@@ -10,23 +10,24 @@ chai.use(chaiAsPromised)
 chai.should()
 const assert = chai.assert
 
-let underTest = null
-
 const SECRET = 'ABCDEF'
 const SIGNATURE = 'cZbZ2VBfTwTMwN6CS6f5tEHboIre8DmedbLZqu0ljU8='
 const PLAIN_TEXT = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-before(function () {
+describe('shopify webhook tests', function () {
   shopifyConfig.webhookKey = SECRET
-  underTest = new Shopify(shopifyConfig)
-  assert.isObject(underTest, 'shopify object was not created correctly')
-  assert.isObject(shopifyConfig.test, 'no test vars set')
-})
+  const underTest = new Shopify(shopifyConfig)
 
-it('shopify : calculate webhook signature', function () {
-  assert.equal(SIGNATURE, underTest.calculateWebhookSignature(PLAIN_TEXT))
-})
+  before(function () {
+    assert.isObject(underTest, 'shopify object was not created correctly')
+    assert.isObject(shopifyConfig.test, 'no test vars set')
+  })
 
-it('shopify : check webhook signature', function () {
-  assert.isTrue(underTest.checkWebhookSignature(PLAIN_TEXT, SIGNATURE))
+  it('shopify : calculate webhook signature', function () {
+    assert.equal(SIGNATURE, underTest.calculateWebhookSignature(PLAIN_TEXT))
+  })
+
+  it('shopify : check webhook signature', function () {
+    assert.isTrue(underTest.checkWebhookSignature(PLAIN_TEXT, SIGNATURE))
+  })
 })
