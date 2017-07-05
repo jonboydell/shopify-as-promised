@@ -20,6 +20,9 @@ before(function () {
   testVars = shopifyConfig.test
 })
 
+afterEach(function () {
+})
+
 it('shopify : get customer orders', function () {
   this.timeout(5000)
   const promise = underTest.customerOrders(testVars.existingCustomerId)

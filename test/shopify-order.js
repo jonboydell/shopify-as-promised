@@ -4,11 +4,8 @@
 const chai = require('chai')
 const chaiAsPromised = require('chai-as-promised')
 const winston = require('winston')
-const request = require('request')
-const sinon = require('sinon')
 const Shopify = require('../shopify')
 const shopifyConfig = require('./config.json')
-
 
 chai.use(chaiAsPromised)
 chai.should()
@@ -95,12 +92,10 @@ before(function () {
 it('shopify orders', function () {
   this.timeout(5000)
 
-  sinon.stub(request, 'get')
-    .yeilds(null, null, JSON.stringify({}))
-
   const promise = underTest.orders('any')
   return Promise.all([
-    promise.should.eventually.be.fulfilled
+    promise.should.eventually.be.fulfilled,
+    promise.should.eventually.have.property('orders')
   ])
 })
 
@@ -109,7 +104,8 @@ it('shopify draft orders', function () {
 
   const promise = underTest.draftOrders('any')
   return Promise.all([
-    promise.should.eventually.be.fulfilled
+    promise.should.eventually.be.fulfilled,
+    promise.should.eventually.have.property('draft_orders')
   ])
 })
 
@@ -118,8 +114,8 @@ it('shopify order : create and update', function () {
   this.timeout(5000)
 
   const state = {}
-  const promise = underTest.createOrder(orderData)
 
+  const promise = underTest.createOrder(orderData)
   return Promise.all([
     promise.should.eventually.be.fulfilled,
     promise.should.eventually.be.an.instanceof(Object),
